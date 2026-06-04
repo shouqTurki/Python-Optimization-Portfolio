@@ -1,0 +1,31 @@
+# algorithmic_efficiency.py
+"""
+Data Structures & Algorithmic Optimization Portfolio
+Author: Shouq Turki
+Description: Implements and analyzes algorithmic efficiency using standard Python structures.
+"""
+
+def find_optimized_pairs(data_list, target_sum):
+    """
+    Finds if two numbers in a list sum up to a target value.
+    Optimized using a Python Set to achieve O(n) Time Complexity instead of O(n^2) brute force.
+    """
+    seen_numbers = set()
+    found_pairs = []
+    
+    for number in data_list:
+        complement = target_sum - number
+        if complement in seen_numbers:
+            found_pairs.append((complement, number))
+        seen_numbers.add(number)
+        
+    return found_pairs
+
+# Example usage to verify execution logic:
+if __name__ == "__main__":
+    mock_data = [10, 15, 3, 7, 8, 2, 5]
+    target = 10
+    
+    print("Analyzing dataset for target sum...")
+    results = find_optimized_pairs(mock_data, target)
+    print(f"Optimized pairs found (Time Complexity: O(n)): {results}")
